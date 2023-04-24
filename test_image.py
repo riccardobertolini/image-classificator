@@ -1,6 +1,6 @@
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
-from keras.models import load_model
+import tensorflow as tf
 
 # Load the image
 img = load_img('test_image/image3.png', target_size=(32, 32))
@@ -15,7 +15,7 @@ img_array = img_array.reshape(1, 32, 32, 3)
 img_array /= 255.
 
 # Load the model
-model = load_model('my_model2.h5')
+model = tf.keras.models.load_model('my_model2.h5')
 
 # Make a prediction
 pred_probs = model.predict(img_array)
