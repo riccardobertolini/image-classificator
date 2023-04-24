@@ -75,8 +75,8 @@ model = Sequential([
 
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-early_stop = EarlyStopping(monitor='val_loss', patience=20, restore_best_weights=True)
-model.fit(train_generator, epochs=60, validation_data=val_generator, callbacks=[early_stop])
+early_stop = EarlyStopping(monitor='val_loss', patience=30, restore_best_weights=True)
+model.fit(train_generator, epochs=80, validation_data=val_generator, callbacks=[early_stop])
 
 test_data = []
 test_labels = []
