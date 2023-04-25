@@ -2,6 +2,11 @@
 
 This project aims to classify images of different species within the Felidae family. It consists of a machine learning model for training and a web server for handling user requests.
 
+## Demo
+It's possible to test the model uploading an image for the prediction using [this link](https://image-classification.herokuapp.com/form).
+The result will be a jason with the possible category prediction probability.
+For security reason, the image once interpolated it's discarded. 
+
 ## Getting Started
 
 Follow these steps to set up and run the project:
