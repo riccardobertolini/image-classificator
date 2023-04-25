@@ -9,7 +9,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 import tensorflow as tf
 from werkzeug.utils import secure_filename
 
-data_dir = '/training/felidae'
+data_dir = 'training/felidae'
 IMG_SIZE = 64
 
 def load_images(species, data_dir):
@@ -34,7 +34,7 @@ def load_images(species, data_dir):
         print(f"{sp}: {img_count} images loaded")
     return np.array(data), np.array(labels)
 
-species = ['cheetah', 'leopard', 'lion', 'puma', 'tiger']
+species = ['Cheetah', 'Leopard', 'Lion', 'Puma', 'Tiger']
 train_data, train_labels = load_images(species, data_dir)
 print(f"Total training images: {len(train_data)}")
 
@@ -76,8 +76,8 @@ model = Sequential([
 
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-early_stop = EarlyStopping(monitor='val_loss', patience=30, restore_best_weights=True)
-model.fit(train_generator, epochs=80, validation_data=val_generator, callbacks=[early_stop])
+early_stop = EarlyStopping(monitor='val_loss', patience=50, restore_best_weights=True)
+model.fit(train_generator, epochs=90, validation_data=val_generator, callbacks=[early_stop])
 
 # Test the model with a sample image
 test_data = []

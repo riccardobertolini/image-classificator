@@ -14,7 +14,7 @@ app = Flask(__name__)
 def get_model():
     return tf.keras.models.load_model('my_model.h5')
 
-species = ['cheetah', 'leopard', 'lion', 'puma', 'tiger']
+species = ['Cheetah', 'Leopard', 'Lion', 'Puma', 'Tiger']
 
 @app.route('/form')
 def index():
