@@ -27,7 +27,7 @@ def predict():
     img = Image.open(io.BytesIO(img_bytes)).convert('RGB')
 
     # Preprocess the image
-    img = img.resize((32, 32), Image.LANCZOS)  # Use LANCZOS for better quality resizing
+    img = img.resize((64, 64), Image.LANCZOS)  # Resize the image to (64, 64)
     img_array = np.array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
 
