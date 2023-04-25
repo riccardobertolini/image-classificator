@@ -3,12 +3,89 @@
   <head>
     <meta charset="utf-8">
     <title>Upload Image</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      form {
+        margin: 0 auto;
+        max-width: 500px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+
+      input[type="file"] {
+        display: block;
+        margin: 20px 0;
+      }
+
+      input[type="submit"] {
+        background-color: #4CAF50;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      p {
+        color: #666;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+    </style>
   </head>
   <body>
     <h1>Upload Image</h1>
     <form method="POST" enctype="multipart/form-data" action="/predict">
-      <input type="file" name="image">
+      <p>Please select an image of a feline to upload.</p>
+      <p>Accepted formats: jpeg or jpg.</p>
+      <p>Max file size: 2MB.</p>
+      <input type="file" name="image" accept="image/jpeg,image/jpg" required>
+      <span class="error"></span>
       <input type="submit" value="Upload">
     </form>
+    <script>
+      const form = document.querySelector('form');
+      const input = document.querySelector('input[type="file"]');
+      const error = document.querySelector('.error');
+
+      form.addEventListener('submit', (event) => {
+        const file = input.files[0];
+        const fileSize = file.size / 1024 / 1024;
+        if (fileSize > 2) {
+          event.preventDefault();
+          error.textContent = 'Error: File size exceeds 2MB.';
+        } else {
+          error.textContent = '';
+        }
+      });
+    </script>
   </body>
 </html>
