@@ -32,5 +32,6 @@ Project Structure
 
 * main.py: The main script for training the machine learning model.
 * app.py: The script to start the web server for handling user requests.
-* models: A directory containing the trained models.
-* data: A directory containing the dataset, organized into subdirectories for each species.
+* training: A directory containing the trained models.
+* my_model.h5: The auto generated model, updated using the training material provided.
+* Procfile/runtime.txt: files used as config for Heroku deployment
