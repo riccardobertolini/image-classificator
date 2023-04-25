@@ -9,7 +9,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 import tensorflow as tf
 from werkzeug.utils import secure_filename
 
-data_dir = 'training/felidae'
+data_dir = '/training/felidae'
 IMG_SIZE = 64
 
 def load_images(species, data_dir):
