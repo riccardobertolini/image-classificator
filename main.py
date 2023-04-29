@@ -9,6 +9,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 import tensorflow as tf
 from werkzeug.utils import secure_filename
 
+#Variables - training directory and Image size.
 data_dir = 'training/felidae'
 IMG_SIZE = 64
 
@@ -79,7 +80,6 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 early_stop = EarlyStopping(monitor='val_loss', patience=50, restore_best_weights=True)
 model.fit(train_generator, epochs=90, validation_data=val_generator, callbacks=[early_stop])
 
-# Test the model with a sample image
 test_data = []
 test_labels = []
 
@@ -98,11 +98,10 @@ for sp in species:
             print(f"Error processing image: {img_path}")
             print(f"Error details: {e}")
 
-test_data = np.array(test_data) / 255.0  # Normalize pixel values
+test_data = np.array(test_data) / 255.0
 test_labels = np.array(test_labels)
 
 test_loss, test_acc = model.evaluate(test_data, test_labels)
 print(f'Test accuracy: {test_acc}')
 
-# Save the model
 model.save('my_model.h5')
